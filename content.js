@@ -1,7 +1,13 @@
 const re = 'cS7aqe NkoVdd';
-const imena = document.getElementsByClassName(re).length;
+var htmlImena = document.getElementsByClassName(re);
+let imena;
+
+for (i = 0; i < x.length; i++) {
+    imena.push(htmlImena[i].innerHTML);
+  }
+
 
 chrome.runtime.sendMessage({
     url: window.location.href,
-    count: imena
+    count: imena.stringify()
   })
