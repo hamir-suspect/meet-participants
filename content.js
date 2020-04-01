@@ -1,13 +1,19 @@
-const re = 'cS7aqe NkoVdd';
-var htmlImena = document.getElementsByClassName(re);
-let imena;
+chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+    const re = 'cS7aqe NkoVdd';
+    var htmlImena = document.getElementsByClassName(re);
+    let imena=[];
+    console.log("ulazimo u peltju");
+    
+    for (i = 0; i < htmlImena.length; i++) {
+        console.log(htmlImena[i].innerHTML);
+        imena.push(htmlImena[i].innerHTML);
+      }
+      console.log("imena");
+     console.log(imena);
 
-for (i = 0; i < x.length; i++) {
-    imena.push(htmlImena[i].innerHTML);
-  }
-
-
-chrome.runtime.sendMessage({
-    url: window.location.href,
-    count: imena.stringify()
-  })
+     sendResponse({
+        url: window.location.href,
+        count: imena.length,
+        data: imena
+      })
+    })
