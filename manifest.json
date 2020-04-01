@@ -1,0 +1,15 @@
+{
+    "name": "prisutni",
+    "version": "1.0",
+    "manifest_version": 2,
+    "content_scripts": [
+        {
+          "matches": ["https://meet.google.com/"],
+          "js": ["content.js"]
+        }
+      ],
+      "browser_action": {
+        "default_title": "Bear",
+        "default_popup":" popup.html"
+      }
+}
