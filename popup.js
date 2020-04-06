@@ -55,6 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
  
             } else {
                 alert("Morate otvoriti listu ucesnika");
+		window.parrent.document.body.style.zoom = 1.0;
             }
         } 
     }

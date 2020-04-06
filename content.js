@@ -1,43 +1,33 @@
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-  const re = "cS7aqe NkoVdd";
-  var htmlImena = document.getElementsByClassName(re);
-  let imena = [];
-
-  for (i = 0; i < htmlImena.length; i++) {
-    imena.push(htmlImena[i].innerHTML);
-  }
-
-  let scrollBar = document.getElementsByClassName(
-    "TnISae CnDs7d hPqowe crOkHf"
-  )[0];
-
-  if (scrollBar) {
-    scrollBar.scrollIntoView({ block: "center" });
-    htmlImena = document.getElementsByClassName(re);
+  window.parent.document.body.style.zoom = 0.2;
+  setInterval(function () {
+    var re = "cS7aqe NkoVdd";
+    var htmlImena = document.getElementsByClassName(re);
+    var imena = [];
 
     for (i = 0; i < htmlImena.length; i++) {
-      if (imena.includes(htmlImena[i].innerHTML)) {
-        console.log("postoji vec :" + htmlImena[i].innerHTML);
-        continue;
+      htmlImena[i].scrollIntoView();
+      var hImena = document.getElementsByClassName(re);
+
+      for (j = 0; j < hImena.length; j++) {
+        if (hImena[j]) {
+          if (imena.includes(hImena[j].innerHTML)) {
+            console.log("postoji vec :" + hImena[j].innerHTML);
+            continue;
+          }
+          imena.push(hImena[j].innerHTML);
+        }
       }
-      imena.push(htmlImena[i].innerHTML);
     }
 
-    scrollBar.scrollIntoView({ block: "end" });
-    htmlImena = document.getElementsByClassName(re);
+    window.document.body.style.zoom = 1;
 
-    for (i = 0; i < htmlImena.length; i++) {
-      if (imena.includes(htmlImena[i].innerHTML)) {
-        console.log("postoji vec :" + htmlImena[i].innerHTML);
-        continue;
-      }
-      imena.push(htmlImena[i].innerHTML);
-    }
-  }
+    sendResponse({
+      url: window.location.href,
+      count: imena.length,
+      data: imena,
+    });
+  }, 200);
 
-  sendResponse({
-    url: window.location.href,
-    count: imena.length,
-    data: imena,
-  });
+  return true;
 });
