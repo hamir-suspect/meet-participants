@@ -1,6 +1,16 @@
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   window.parent.document.body.style.zoom = 0.2;
-  setInterval(function () {
+  setTimeout(function () {
+    let scrollBar = document.getElementsByClassName(
+      "TnISae CnDs7d hPqowe crOkHf"
+    )[0];
+
+    if (scrollBar) {
+      scrollBar.scrollIntoView({ block: "start" });
+    }
+  }, 500);
+
+  setTimeout(function () {
     var re = "cS7aqe NkoVdd";
     var htmlImena = document.getElementsByClassName(re);
     var imena = [];
@@ -27,7 +37,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
       count: imena.length,
       data: imena,
     });
-  }, 200);
+  }, 1000);
 
   return true;
 });
